@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import '../styles/Grid.css'
+import Nav from './Nav.js'
 
 function makeGrid(){
     let container = []
@@ -20,8 +21,6 @@ function makeGrid(){
     }
     container[10][10].color = 'blue'
     container[20][30].color = 'red'
-    // container[2][2].color = 'blue'
-    // container[1][1].color = 'red'
     return container
 }
 
@@ -89,10 +88,6 @@ function dijkstra(grid){
     }
     console.log(visited)
     let shortest_path = get_path(path_node).reverse()
-    // for (let i=0; i < shortest_path.length; i++){
-    //     let node = document.getElementById(""+shortest_path[i][0]+""+shortest_path[i][1])
-    //     node.style.background = 'green'
-    // }
     console.log(shortest_path)
     return [visited, shortest_path]
 }
@@ -125,13 +120,15 @@ class Grid extends Component{
             start_pos: [10, 10],
             end_pos: [15, 20],
             mousePressed: false,
-            visualized: false,
+            canClick: true,
         }
-        // this.handleClick = this.handleClick.bind(this)
+        this.handleClick = this.handleClick.bind(this)
         this.handleMouseDown = this.handleMouseDown.bind(this)
         this.handleMouseEnter = this.handleMouseEnter.bind(this)
         this.handleMouseUp = this.handleMouseUp.bind(this)
         this.visualize = this.visualize.bind(this)
+        this.resetGrid = this.resetGrid.bind(this)
+        this.addWeights = this.addWeights.bind(this)
     }
 
     // make grid
@@ -159,20 +156,20 @@ class Grid extends Component{
     // }
 
     visualize(){
+        if (!this.state.canClick){return}
         //reset 
         let grid = this.state.grid
-        if (this.state.visualized){
-            for (let i=0; i< grid.length; i++){
-                for (let j=0; j < grid[i].length; j++){
-                    let node = document.getElementById(""+i+" "+j)
-                    let color = node.style.background
-                    if (color !== 'red' && color !== 'blue' && color !== 'black'){
-                        node.style.background = 'white'
-                    }   
-                    grid[i][j].isVisited = false
-                    grid[i][j].previous = null
-                    grid[i][j].totaldist = 999
-                }
+        for (let i=0; i< grid.length; i++){
+            for (let j=0; j < grid[i].length; j++){
+                let node = document.getElementById(""+i+" "+j)
+                let color = node.style.background
+                if (color !== 'red' && color !== 'blue' && color !== 'black'){
+                    node.style.background = 'white'
+                }   
+                grid[i][j].isVisited = false
+                grid[i][j].previous = null
+                grid[i][j].totaldist = 999
+                node.classList.remove('visited')
             }
         }
 
@@ -181,15 +178,21 @@ class Grid extends Component{
         let paths = result[0]
         let shortest_path = result[1]
         // animate paths 
+        this.setState({canClick: false})
         for(let i=1; i <= paths.length; i++){
             if (i===paths.length){
                 setTimeout(()=>{
-                    for(let j=1; j < shortest_path.length-1; j++){
+                    for(let j=1; j <= shortest_path.length-1; j++){
                         setTimeout(()=>{
-                                let indexes = shortest_path[j]
-                                let node = document.getElementById(""+indexes[0]+" "+indexes[1])
-                                node.style.background = 'green'
-                            
+                                if (j === shortest_path.length-1){
+                                    this.setState({canClick: true})
+                                }
+                                else{
+                                    let indexes = shortest_path[j]
+                                    let node = document.getElementById(""+indexes[0]+" "+indexes[1])
+                                    node.style.background = 'green'                                    
+                                }
+
                         }, 50*j)
                     }
                 }, 10*i)
@@ -197,9 +200,8 @@ class Grid extends Component{
             else{
                 setTimeout(()=>{
                     let indexes = paths[i].index
-                    console.log(indexes)
                     let node = document.getElementById(""+indexes[0]+" "+indexes[1])
-                    console.log(node.id)
+                    node.classList.add('visited')
                     node.style.background = 'yellow'
                 }, 10 * i )
             }
@@ -207,50 +209,67 @@ class Grid extends Component{
         this.setState({visualized: true})
     }
 
-    handleClick(e, index1, index2){
-        let start_pos = this.state.start_pos
-        let end_pos = this.state.end_pos
-        let back_color = e.currentTarget.style.background
-        // if ((index1 !== start_pos[0] || index2 !== start_pos[1])
-        // && (index1 !== end_pos[0] || index2 !== end_pos[1])){
-        if (back_color !== 'red' && back_color !== 'blue'){
-            // let grid = this.state.grid
-            if (back_color !== 'black'){
-                e.currentTarget.style.background = 'black'
-                // grid[index1][index2].color = 'black'   
+    // reset everything 
+    resetGrid(){
+        if (!this.state.canClick){return}
+        let grid = this.state.grid
+        for (let i=0; i< grid.length; i++){
+            for (let j=0; j < grid[i].length; j++){
+                let node = document.getElementById(""+i+" "+j)
+                let color = node.style.background
+                if (color !== 'red' && color !== 'blue'){
+                    node.style.background = 'white'
+                }   
+                grid[i][j].isVisited = false
+                grid[i][j].previous = null
+                grid[i][j].totaldist = 999
+                grid[i][j].dist = 0
+                node.classList.remove('visited')
             }
-            else{
-                e.currentTarget.style.background = 'white'
-                // grid[index1][index2].color = 'white'  
-            }
-            // this.setState(grid)
         }
+        this.setState(this.state)
+        
+    }
+
+    addWeights(){
+        if (!this.state.canClick){return}
+        addRandomDist(this.state.grid)
+        this.setState(this.state)
+    }
+
+    handleClick(e, index1, index2){
+        if (this.state.canClick){
+            let back_color = e.currentTarget.style.background
+            if (back_color !== 'red' && back_color !== 'blue'){
+                if (back_color !== 'black'){
+                    e.currentTarget.style.background = 'black'
+                    e.currentTarget.classList.add('visited')
+                }
+                else{
+                    e.currentTarget.style.background = 'white' 
+                    e.currentTarget.classList.remove('visited')
+                }
+            }
+        }
+        
     }
 
     handleMouseDown(e){
-        this.setState({mousePressed: true})
+        if (this.state.canClick){
+            this.setState({mousePressed: true})
+        }
     }
     handleMouseEnter(e){
         if (!this.state.mousePressed){return}
         console.log('in')
-        let index1 = e.currentTarget.getAttribute('index1')
-        let index2 = e.currentTarget.getAttribute('index2')
         let color = e.currentTarget.style.background
         let mousePressed = this.state.mousePressed
         if (mousePressed && color !== 'red' && color !== 'blue'){
+            if (color === 'white') {e.currentTarget.classList.add('visited')}
+            else{e.currentTarget.classList.remove('visited')}
             e.currentTarget.style.background = 
                 color !=='black' ? 'black' :
                 color ==='black' ? 'white' : color
-            // let new_grid = this.state.grid
-            // new_grid[index1][index2].color = color==='white' ? 'black' : 'white'
-            // this.setState({grid: new_grid})
-
-            // change empty cells to wall cells, vice versa
-            // new_grid[index1][index2].val = 
-            //     color ==='white' ? 'w' : 
-            //     color ==='blue' ? 's' :
-            //     color ==='red' ? 'e' : ''
-            // this.setState({grid: new_grid})
         }
     }
     handleMouseUp(){
@@ -259,31 +278,31 @@ class Grid extends Component{
     
     render(){
         let curr_grid = this.state.grid
-        let start_pos = this.state.start_pos
-        let end_pos = this.state.end_pos
-
         return(
             <div className='flex-container'>
-                <label onClick={this.visualize}>visualize</label>
+                <Nav handleVisualization={this.visualize} 
+                    handleReset={this.resetGrid}
+                    handleAddingWeights={this.addWeights}
+                />
                 <div className='grid-container'>
                     {
                         curr_grid.map((row, index1) => (
                             row.map((i, index2) => {
-                                // let color = (i.val === 's') ? 'blue' : (i.val === 'e') ? 'red' : 
-                                //         (i.val === 'w') ? 'black' : 'white'
                                 return (
                                     <div 
                                         key={''+index1+''+index2} 
                                         index1={index1}
                                         index2={index2}
                                         id={`${index1} ${index2}`}
-                                        className='cell' 
+                                        className='cell'
                                         style={{background: i.color}}
                                         onClick={(e) => this.handleClick(e, index1, index2)}
                                         onMouseDown={(e) => this.handleMouseDown(e)}
                                         onMouseUp={this.handleMouseUp}
                                         onMouseEnter={this.handleMouseEnter}
-                                    />
+                                    >
+                                        {i.dist > 0 ? i.dist : ''}
+                                    </div>
                                 )
                             })
                         ))
@@ -292,6 +311,24 @@ class Grid extends Component{
                 </div>
             </div>
         )
+    }
+}
+
+// https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function addRandomDist(grid){
+    for (let i=0; i < grid.length; i++){
+        for (let j=0; j < grid[i].length; j++){
+            if (grid[i][j].color !== 'red' && grid[i][j].color !== 'blue'){
+                grid[i][j].dist = getRandomInt(1, 9)
+            }
+            
+        }
     }
 }
 

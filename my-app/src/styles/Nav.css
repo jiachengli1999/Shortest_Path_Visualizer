@@ -1,0 +1,28 @@
+.nav-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background-color: #333333;
+}
+
+.nav-container > div{
+    float: left;
+    font-size: 25px;
+    color: white;
+    padding: 20px;
+}
+
+.nav-container > div:hover{
+    background-color: white;
+    color: black
+}
+
+.selected{
+    background-color: pink;
+    color: black;
+}
+.reset-btn{
+    background-color: red;
+    
+}

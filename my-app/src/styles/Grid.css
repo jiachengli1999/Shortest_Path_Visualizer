@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .grid-container{
@@ -14,10 +15,26 @@
 
 .cell{
     border: 1px solid rgb(32, 55, 158);
-    /* background-color: 'white'; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.visited{
+    animation-name: bubbleUpAnimation;
+    animation-duration: 0.5s;
 }
 
-label{
-    background-color: pink;
+@keyframes bubbleUpAnimation{
+    0%{
+        transform: scale(0.5);
+        opacity: 0.5;
+    }
+    50%{
+        transform: scale(1.2);
+        opacity: 0.75;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
 }
-
