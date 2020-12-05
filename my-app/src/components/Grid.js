@@ -182,6 +182,10 @@ class Grid extends Component{
         for(let i=1; i <= paths.length; i++){
             if (i===paths.length){
                 setTimeout(()=>{
+                    if (shortest_path.length === 0){
+                        this.setState({canClick: true})
+                        return 
+                    }
                     for(let j=1; j <= shortest_path.length-1; j++){
                         setTimeout(()=>{
                                 if (j === shortest_path.length-1){

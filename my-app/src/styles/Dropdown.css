@@ -1,0 +1,53 @@
+.dropdown-container{
+    display: 'flex';
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.dropdown-container > div{
+    margin-bottom: 10px;
+}
+
+.dropdown-box1{
+    background-color: #333333;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+}
+.dropdown-box2{
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.dropdown-box2 > .dropdown-para{
+    font-size: 20px;
+}
+
+.dropdown-name, .dropdown-para, .dropdown-code{
+    padding: 10px;
+}
+
+p {
+    white-space: pre;
+}
+
+.dropdown-code{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.dropdown-images{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.img{
+    width: 400px;
+}
