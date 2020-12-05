@@ -9,13 +9,17 @@
 }
 
 .dropdown-box1{
-    background-color: #333333;
+    background-color: #003366;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     color: white;
     font-size: 25px;
 }
+/* .dropdown-box1:hover{
+    background-color: peachpuff;
+    color: black;
+} */
 .dropdown-box2{
     display: none;
     justify-content: flex-start;

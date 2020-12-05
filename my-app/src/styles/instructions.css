@@ -1,0 +1,20 @@
+.legend-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.legend{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin: 10px;
+}
+.legend-color{
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+.legend-text{
+    margin-left: 5px;
+}

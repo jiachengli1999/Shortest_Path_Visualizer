@@ -9,12 +9,13 @@
     display: grid;
     grid-template-rows: repeat(30, 30px);
     grid-template-columns: repeat(40, 30px);
-    /* grid-gap: 1px; */
+    /* margin: 50px; */
+    grid-gap: 1px;
     /* width: 60%; */
 }
 
 .cell{
-    border: 1px solid rgb(32, 55, 158);
+    border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
