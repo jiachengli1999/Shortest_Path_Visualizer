@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Shortest_Path_Visualizer/static/css/main.fe618386.chunk.css",
+    "main.css": "/Shortest_Path_Visualizer/static/css/main.9387b938.chunk.css",
     "main.js": "/Shortest_Path_Visualizer/static/js/main.37ba386d.chunk.js",
     "main.js.map": "/Shortest_Path_Visualizer/static/js/main.37ba386d.chunk.js.map",
     "runtime-main.js": "/Shortest_Path_Visualizer/static/js/runtime-main.cfcc811e.js",
@@ -10,7 +10,7 @@
     "static/js/3.90b9abee.chunk.js": "/Shortest_Path_Visualizer/static/js/3.90b9abee.chunk.js",
     "static/js/3.90b9abee.chunk.js.map": "/Shortest_Path_Visualizer/static/js/3.90b9abee.chunk.js.map",
     "index.html": "/Shortest_Path_Visualizer/index.html",
-    "static/css/main.fe618386.chunk.css.map": "/Shortest_Path_Visualizer/static/css/main.fe618386.chunk.css.map",
+    "static/css/main.9387b938.chunk.css.map": "/Shortest_Path_Visualizer/static/css/main.9387b938.chunk.css.map",
     "static/js/2.764bc7bc.chunk.js.LICENSE.txt": "/Shortest_Path_Visualizer/static/js/2.764bc7bc.chunk.js.LICENSE.txt",
     "static/media/0.PNG": "/Shortest_Path_Visualizer/static/media/0.bb6ebe8e.PNG",
     "static/media/1.PNG": "/Shortest_Path_Visualizer/static/media/1.959fe514.PNG",
@@ -27,7 +27,7 @@
   "entrypoints": [
     "static/js/runtime-main.cfcc811e.js",
     "static/js/2.764bc7bc.chunk.js",
-    "static/css/main.fe618386.chunk.css",
+    "static/css/main.9387b938.chunk.css",
     "static/js/main.37ba386d.chunk.js"
   ]
 }
