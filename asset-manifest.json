@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/Shortest_Path_Visualizer/static/css/main.fe618386.chunk.css",
+    "main.js": "/Shortest_Path_Visualizer/static/js/main.37ba386d.chunk.js",
+    "main.js.map": "/Shortest_Path_Visualizer/static/js/main.37ba386d.chunk.js.map",
+    "runtime-main.js": "/Shortest_Path_Visualizer/static/js/runtime-main.cfcc811e.js",
+    "runtime-main.js.map": "/Shortest_Path_Visualizer/static/js/runtime-main.cfcc811e.js.map",
+    "static/js/2.764bc7bc.chunk.js": "/Shortest_Path_Visualizer/static/js/2.764bc7bc.chunk.js",
+    "static/js/2.764bc7bc.chunk.js.map": "/Shortest_Path_Visualizer/static/js/2.764bc7bc.chunk.js.map",
+    "static/js/3.90b9abee.chunk.js": "/Shortest_Path_Visualizer/static/js/3.90b9abee.chunk.js",
+    "static/js/3.90b9abee.chunk.js.map": "/Shortest_Path_Visualizer/static/js/3.90b9abee.chunk.js.map",
+    "index.html": "/Shortest_Path_Visualizer/index.html",
+    "static/css/main.fe618386.chunk.css.map": "/Shortest_Path_Visualizer/static/css/main.fe618386.chunk.css.map",
+    "static/js/2.764bc7bc.chunk.js.LICENSE.txt": "/Shortest_Path_Visualizer/static/js/2.764bc7bc.chunk.js.LICENSE.txt",
+    "static/media/0.PNG": "/Shortest_Path_Visualizer/static/media/0.bb6ebe8e.PNG",
+    "static/media/1.PNG": "/Shortest_Path_Visualizer/static/media/1.959fe514.PNG",
+    "static/media/2.PNG": "/Shortest_Path_Visualizer/static/media/2.e39e78ba.PNG",
+    "static/media/3.PNG": "/Shortest_Path_Visualizer/static/media/3.54c754d8.PNG",
+    "static/media/4.PNG": "/Shortest_Path_Visualizer/static/media/4.c0760f9f.PNG",
+    "static/media/5.PNG": "/Shortest_Path_Visualizer/static/media/5.9eb28fc4.PNG",
+    "static/media/bfs1.PNG": "/Shortest_Path_Visualizer/static/media/bfs1.fa68a65e.PNG",
+    "static/media/bfs2.PNG": "/Shortest_Path_Visualizer/static/media/bfs2.94b6c47d.PNG",
+    "static/media/bfs3.PNG": "/Shortest_Path_Visualizer/static/media/bfs3.33205fa2.PNG",
+    "static/media/bfs4.PNG": "/Shortest_Path_Visualizer/static/media/bfs4.237a1784.PNG",
+    "static/media/logo.6ce24c58.svg": "/Shortest_Path_Visualizer/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cfcc811e.js",
+    "static/js/2.764bc7bc.chunk.js",
+    "static/css/main.fe618386.chunk.css",
+    "static/js/main.37ba386d.chunk.js"
+  ]
+}
